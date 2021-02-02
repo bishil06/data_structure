@@ -105,6 +105,7 @@ describe('Linked List', () => {
         llist.append(30);
         llist.prepend(40);
         expect(llist.first()).toBe(40);
+        expect(llist.cur).toBe(llist.head);
     });
 
     test('should next empty linked list', () => {
@@ -120,9 +121,14 @@ describe('Linked List', () => {
         llist.append(40);
 
         expect(llist.first()).toBe(10);
+        expect(llist.cur).toBe(llist.head);
         expect(llist.next()).toBe(20);
+        expect(llist.cur).toBe(llist.head.getNext());
         expect(llist.next()).toBe(30);
+        expect(llist.cur).toBe(llist.head.getNext().getNext());
         expect(llist.next()).toBe(40);
+        expect(llist.cur).toBe(llist.head.getNext().getNext().getNext());
+        expect(llist.cur).toBe(llist.tail);
         expect(llist.next()).toBeNull();
         expect(llist.next()).toBeNull();
         expect(llist.next()).toBeNull();
@@ -166,5 +172,33 @@ describe('Linked List', () => {
             expect(v).toBe(testValue);
             testValue+=10;
         }
+    });
+
+    test('should init linked list from iterable', () => {
+        const llist = new LinkedList([1, 2, 3, 4]);
+
+        expect(llist.first()).toBe(1);
+        expect(llist.next()).toBe(2);
+        expect(llist.next()).toBe(3);
+        expect(llist.next()).toBe(4);
+    });
+
+    test('should init linked list from not iterable', () => {
+        expect(() => new LinkedList({1 : 'one', 2: 'two', 3: 'three'})).toThrow();
+        expect(() => new LinkedList([1,2,3,4,5])).not.toThrow();
+        let s = new Set([1, 1, 2, 3, 4]);
+        expect(() => new LinkedList(s)).not.toThrow();
+        let m = new Map([[1, 'one'], [2, 'tow'], [3, 'three']]);
+        expect(() => new LinkedList(m)).not.toThrow();
+    });
+
+    test('should from linked list', () => {
+        const llist = LinkedList.from([1,2,3,4,5]);
+
+        expect(llist.first()).toBe(1);
+        expect(llist.next()).toBe(2);
+        expect(llist.next()).toBe(3);
+        expect(llist.next()).toBe(4);
+        expect(llist.next()).toBe(5);
     });
 });

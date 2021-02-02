@@ -7,6 +7,17 @@ class LinkedList {
         this.cur = null;
         this.numOfNode = 0;
         this.compFn = null;
+
+        if (iter) {
+            if (iter[Symbol.iterator]) {
+                for(const v of iter) {
+                    this.append(v);
+                }
+            }
+            else {
+                throw new TypeError('is not iterable');
+            }
+        }
     }
 
     append(value) {
@@ -64,6 +75,14 @@ class LinkedList {
         while (v = this.next()) {
             yield v;
         }
+    }
+
+    static from(iter) {
+        const llist = new LinkedList();
+        for(const v of iter) {
+            llist.append(v);
+        }
+        return llist;
     }
 }
 
