@@ -19,6 +19,11 @@ class LinkedListNode {
     getNext(node) {
         return this.nextNode;
     }
+
+    setNull() {
+        this.value = null;
+        this.nextNode = null;
+    }
 }
 
 module.exports = LinkedListNode;
