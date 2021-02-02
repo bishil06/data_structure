@@ -54,6 +54,17 @@ class LinkedList {
         }
         return this.cur.getValue();
     }
+
+    *[Symbol.iterator]() {
+        if (this.head === null) {
+            return null;
+        }
+        let v = this.first();
+        yield v;
+        while (v = this.next()) {
+            yield v;
+        }
+    }
 }
 
 module.exports = LinkedList;

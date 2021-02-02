@@ -145,4 +145,26 @@ describe('Linked List', () => {
             expect(v).toBe(testValue);
         }
     });
+
+    test('should iterable empty linked list', () => {
+        const llist = new LinkedList();
+
+        for(const v of llist) {
+            throw new Error('error');
+        }
+    });
+
+    test('should iterable linked list', () => {
+        const llist = new LinkedList();
+
+        for(let i=1; i<=3; i++) {
+            llist.append(i*10);
+        }
+
+        let testValue = 10;
+        for(const v of llist) {
+            expect(v).toBe(testValue);
+            testValue+=10;
+        }
+    });
 });
