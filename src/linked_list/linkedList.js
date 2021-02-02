@@ -17,6 +17,11 @@ class LinkedList {
             this.numOfNode += 1;
             return this;
         }
+
+        this.tail.setNext(newNode);
+        this.tail = newNode;
+        this.numOfNode += 1;
+        return this;
     }
 }
 
