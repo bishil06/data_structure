@@ -27,11 +27,20 @@ class LinkedList {
     prepend(value) {
         const newNode = new LinkedListNode(value, this.head);
         this.head = newNode;
-        if (this.tail === null) {
+        if (this.tail === null || this.head.getNext() === null ) {
             this.tail = newNode;
         }
         this.numOfNode += 1;
         return this;
+    }
+
+    first() {
+        if (this.head === null) {
+            return null;
+        }
+
+        this.cur = this.head;
+        return this.cur.getValue();
     }
 }
 
