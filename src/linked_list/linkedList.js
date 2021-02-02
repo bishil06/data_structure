@@ -23,6 +23,16 @@ class LinkedList {
         this.numOfNode += 1;
         return this;
     }
+
+    prepend(value) {
+        const newNode = new LinkedListNode(value, this.head);
+        this.head = newNode;
+        if (this.tail === null) {
+            this.tail = newNode;
+        }
+        this.numOfNode += 1;
+        return this;
+    }
 }
 
 module.exports = LinkedList;
