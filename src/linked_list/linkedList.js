@@ -42,6 +42,18 @@ class LinkedList {
         this.cur = this.head;
         return this.cur.getValue();
     }
+
+    next() {
+        if (this.cur === null) {
+            return this.cur;
+        }
+
+        this.cur = this.cur.getNext();
+        if (this.cur === null) {
+            return this.cur;
+        }
+        return this.cur.getValue();
+    }
 }
 
 module.exports = LinkedList;

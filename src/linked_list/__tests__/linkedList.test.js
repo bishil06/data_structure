@@ -103,7 +103,29 @@ describe('Linked List', () => {
         llist.append(10);
         llist.append(20);
         llist.append(30);
-        llist.prepend(40)
+        llist.prepend(40);
         expect(llist.first()).toBe(40);
+    });
+
+    test('should next empty linked list', () => {
+        const llist = new LinkedList();
+        expect(llist.next()).toBeNull();
+    });
+
+    test('should next linked list', () => {
+        const llist = new LinkedList();
+        llist.append(10);
+        llist.append(20);
+        llist.append(30);
+        llist.append(40);
+
+        expect(llist.first()).toBe(10);
+        expect(llist.next()).toBe(20);
+        expect(llist.next()).toBe(30);
+        expect(llist.next()).toBe(40);
+        expect(llist.next()).toBeNull();
+        expect(llist.next()).toBeNull();
+        expect(llist.next()).toBeNull();
+        expect(llist.next()).toBeNull();
     });
 });
