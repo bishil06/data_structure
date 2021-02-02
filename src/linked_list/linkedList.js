@@ -66,6 +66,64 @@ class LinkedList {
         return this.cur.getValue();
     }
 
+    setCompFn(compFn) {
+        this.compFn = compFn;
+    }
+
+    delete(value, compFn) {
+        if (this.head === null) {
+            return null;
+        }
+
+        if (!compFn) {
+            compFn = this.compFn;
+            if (!compFn) {
+                throw new Error('not set compare function');
+            }
+        }
+
+        let deleteNode = null;
+        let prevDeleteNode = null;
+        
+        this.cur = this.head;
+        let v = this.cur.getValue();
+
+        if (compFn(value, v) ===  true) {
+            deleteNode = this.cur;
+            this.head = deleteNode.getNext();
+            if (this.head === null) {
+                this.tail = null;
+            }
+            deleteNode.setNull();
+            this.numOfNode -= 1;
+            return this;
+        }
+
+        while ( v !== null) {
+            prevDeleteNode = this.cur;
+            this.cur = this.cur.getNext();
+            if (this.cur === null) {
+                return null;
+            }
+
+            v = this.cur.getValue();
+            if (compFn(value, v) === true) {
+                deleteNode = this.cur;
+                prevDeleteNode.setNext(deleteNode.getNext());
+                if (prevDeleteNode.getNext() === null) {
+                    this.tail = null;
+                }
+                deleteNode.setNull();
+                this.numOfNode -= 1;
+                return this;
+            }
+        }
+    }
+
+    deleteAll(value, compFn) {
+        while(this.delete(value, compFn) !== null) {}
+    }
+
     *[Symbol.iterator]() {
         if (this.head === null) {
             return null;
