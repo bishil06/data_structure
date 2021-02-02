@@ -201,4 +201,106 @@ describe('Linked List', () => {
         expect(llist.next()).toBe(4);
         expect(llist.next()).toBe(5);
     });
+
+    test('should set compare function to linked list', () => {
+        const llist = new LinkedList();
+        let compareFunction = (a, b) => a===b;
+        llist.setCompFn(compareFunction);
+        expect(llist.compFn).toBe(compareFunction);
+    });
+
+    test('should delete empty linked list', () => {
+        const llist = new LinkedList();
+        expect(llist.delete()).toBeNull();
+    });
+
+    test('should delete linked list not set compare function', () => {
+        const llist = new LinkedList();
+        llist.append(1);
+        expect(() => llist.delete(1)).toThrow();
+        llist.setCompFn((a, b) => a === b);
+        expect(() => llist.delete(1)).not.toThrow();
+    });
+
+    test('should one delete linked list ', () => {
+        const llist = new LinkedList();
+        llist.setCompFn((a, b) => a === b);
+        
+        llist.append(1);
+        expect(llist.numOfNode).toBe(1);
+
+        llist.delete(1);
+        expect(llist.numOfNode).toBe(0);
+        expect(llist.head).toBeNull();
+        expect(llist.tail).toBeNull();
+    });
+
+    test('should delete linked list', () => {
+        const llist = new LinkedList();
+        for(let i=1; i<10; i++) {
+            llist.append(i);
+        }
+
+        llist.delete(3, (a, b) => a===b);
+        expect(llist.first()).toBe(1);
+        expect(llist.next()).toBe(2);
+        expect(llist.next()).toBe(4);
+        expect(llist.next()).toBe(5);
+        expect(llist.next()).toBe(6);
+        expect(llist.next()).toBe(7);
+        expect(llist.next()).toBe(8);
+        expect(llist.next()).toBe(9);
+        expect(llist.next()).toBeNull();
+    });
+
+    test('should delete linked list set compFn', () => {
+        const llist = new LinkedList();
+        llist.setCompFn((a, b) => a===b);
+
+        for(let i=1; i<10; i++) {
+            llist.append(i);
+        }
+
+        llist.delete(3);
+        expect(llist.first()).toBe(1);
+        expect(llist.next()).toBe(2);
+        expect(llist.next()).toBe(4);
+        expect(llist.next()).toBe(5);
+    });
+
+    test('should delete linked list oven', () => {
+        const llist = new LinkedList();
+        for(let i=1; i<10; i++) {
+            llist.append(i);
+        }
+
+        llist.delete(2, (two, value) => (value%two === 0));
+        llist.delete(2, (two, value) => (value%two === 0));
+        llist.delete(2, (two, value) => (value%two === 0));
+        llist.delete(2, (two, value) => (value%two === 0));
+
+        expect(llist.first()).toBe(1);
+        expect(llist.next()).toBe(3);
+        expect(llist.next()).toBe(5);
+        expect(llist.next()).toBe(7);
+        expect(llist.next()).toBe(9);
+    });
+
+    test('should delete all linked list oven', () => {
+        const llist = new LinkedList();
+        llist.setCompFn((a, b) => a===b);
+
+        for(let i=1; i<10; i++) {
+            llist.append(i);
+        }
+
+        llist.deleteAll(2, (two, value) => (value%two === 0));
+
+        expect(llist.first()).toBe(1);
+        expect(llist.next()).toBe(3);
+        expect(llist.next()).toBe(5);
+        expect(llist.next()).toBe(7);
+        expect(llist.next()).toBe(9);
+    });
+
 });

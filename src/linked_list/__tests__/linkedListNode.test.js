@@ -76,4 +76,14 @@ describe('Linked List Node', () => {
         expect(node1.getNext().getValue()).toBe(2);
         expect(node1.getNext().getNext().getValue()).toBe(3);
     });
+
+    test('should set null linked list node', () => {
+        const node = new LinkedListNode(1);
+        expect(node.getValue()).toBe(1);
+        expect(node.getNext()).toBeNull();
+
+        node.setNull()
+        expect(node.getValue()).toBeNull();
+        expect(node.getNext()).toBeNull();
+    });
 });
