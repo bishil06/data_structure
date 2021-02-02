@@ -8,6 +8,16 @@ class LinkedList {
         this.numOfNode = 0;
         this.compFn = null;
     }
+
+    append(value) {
+        const newNode = new LinkedListNode(value);
+        if (this.head === null) {
+            this.head = newNode;
+            this.tail = newNode;
+            this.numOfNode += 1;
+            return this;
+        }
+    }
 }
 
 module.exports = LinkedList;

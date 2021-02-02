@@ -10,4 +10,14 @@ describe('Linked List', () => {
         expect(llist.numOfNode).toBe(0);
         expect(llist.compFn).toBeNull();
     });
+
+    test('should append linked list', () => {
+        const llist = new LinkedList();
+        llist.append(10);
+
+        expect(llist.head.getValue()).toBe(10);
+        expect(llist.tail.getValue()).toBe(10);
+        expect(llist.numOfNode).toBe(1);
+        expect(llist.compFn).toBeNull();
+    });
 });
