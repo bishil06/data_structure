@@ -9,3 +9,5 @@ class LinkedList {
         this.compFn = null;
     }
 }
+
+module.exports = LinkedList;
