@@ -128,4 +128,21 @@ describe('Linked List', () => {
         expect(llist.next()).toBeNull();
         expect(llist.next()).toBeNull();
     });
+
+    test('should while loop linked list', () => {
+        const llist = new LinkedList();
+        llist.append(10);
+        llist.append(20);
+        llist.append(30);
+        llist.append(40);
+
+        let testValue = 10;
+        let v = llist.first();
+        expect(v).toBe(testValue);
+
+        while (v = llist.next()) {
+            testValue += 10;
+            expect(v).toBe(testValue);
+        }
+    });
 });
