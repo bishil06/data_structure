@@ -120,6 +120,30 @@ class LinkedList {
         }
     }
 
+    deleteHead() {
+        if (this.head === null) {
+            return null;
+        }
+
+        let deleteNode = null;
+
+        if (this.head.getNext() === null) {
+            deleteNode = this.head;
+            deleteNode.setNull();
+            this.head = null;
+            this.tail = null;
+            this.numOfNode -= 1;
+            return this;
+        }
+        else {
+            deleteNode = this.head;
+            this.head = this.head.getNext();
+            deleteNode.setNull();
+            this.numOfNode -= 1;
+            return this;
+        }
+    }
+
     deleteAll(value, compFn) {
         while(this.delete(value, compFn) !== null) {}
     }

@@ -303,4 +303,58 @@ describe('Linked List', () => {
         expect(llist.next()).toBe(9);
     });
 
+    test('should deleteHead linked list', () => {
+        const llist = new LinkedList();
+        llist.append(1);
+        llist.append(2);
+        llist.append(3);
+        llist.append(4);
+
+        llist.deleteHead();
+        llist.deleteHead();
+        expect(llist.first()).toBe(3)
+        llist.deleteHead();
+        expect(llist.first()).toBe(4)
+
+        const llist2 = new LinkedList();
+        llist2.append(1);
+        llist2.append(1);
+        llist2.append(1);
+        llist2.append(1);
+        llist2.append(1);
+
+        while(llist2.deleteHead() !== null) {}
+        expect(llist2.first()).toBeNull()
+        expect(llist2.numOfNode).toBe(0);
+    });
+
+    test('should 1000000 append in linked list', () => {
+        let times = 1000000;
+
+        let linkedList_append_test_name = `linked list ${times} append`;
+        console.time(linkedList_append_test_name);
+        const llist = new LinkedList();
+        for(let i=0; i<times; i++) {
+            llist.append(i);
+        }
+        console.timeEnd(linkedList_append_test_name);
+
+        let linkedList_delete_test_name = `linked list ${times} delete`;
+        console.time(linkedList_delete_test_name);
+        while (llist.deleteHead() !== null) {}
+        console.timeEnd(linkedList_delete_test_name);
+
+        let array_push_test_name = `array ${times} append`;
+        console.time(array_push_test_name);
+        const arr = [];
+        for(let i=0; i<times; i++) {
+            arr.push(i);
+        }
+        console.timeEnd(array_push_test_name);
+
+        let array_pop_test_name = `array ${times} pop`;
+        console.time(array_pop_test_name);
+        while (arr.pop() !== undefined) {};
+        console.timeEnd(array_pop_test_name);
+    });
 });
