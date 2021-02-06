@@ -1,6 +1,6 @@
 class LinkedListNode {
     constructor(value, nextNode) {
-        this.value = value ? value : null;
+        this.value = value !== undefined ? value : null;
         this.nextNode = nextNode ? nextNode : null;
     }
 

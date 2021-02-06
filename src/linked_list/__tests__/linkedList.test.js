@@ -219,6 +219,15 @@ describe('Linked List', () => {
         expect(llist.delete()).toBeNull();
     });
 
+    test('should prepend delete linkde list', () => {
+        const llist = new LinkedList();
+
+        llist.prepend(0);
+        expect(llist.first()).toBe(0);
+        llist.deleteHead();
+        expect(llist.isEmpty()).toBe(true);
+    })
+
     test('should delete linked list not set compare function', () => {
         const llist = new LinkedList();
         llist.append(1);

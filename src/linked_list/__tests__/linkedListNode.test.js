@@ -42,6 +42,12 @@ describe('Linked List Node', () => {
         expect(node.getValue()).toBe(1);
     });
 
+    test('should get value Node 2', () => {
+        const node = new LinkedListNode(0);
+
+        expect(node.getValue()).toBe(0);
+    });
+
     test('should set next node', () => {
         const node1 = new LinkedListNode(1);
         const node2 = new LinkedListNode(2);

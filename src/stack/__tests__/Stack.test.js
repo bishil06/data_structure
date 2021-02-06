@@ -46,6 +46,15 @@ describe('Stack', () => {
         expect(stack.pop()).toBeNull();
     });
 
+    test('should push pop stack', () => {
+        const stack = new Stack();
+
+        stack.push(0);
+        expect(stack.isEmpty()).toBe(false);
+        expect(stack.peek()).toBe(0);
+        expect(stack.pop()).toBe(0);
+    });
+
     test('should iterate stack', () => {
         const stack = new Stack();
 
