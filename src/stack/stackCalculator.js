@@ -66,7 +66,6 @@ function stackCalculator(expression) {
             }
         }
         else {
-            console.log('test', e);
             stack.push(e)
         }
         // console.log(e);
@@ -77,7 +76,7 @@ function stackCalculator(expression) {
 
 console.log(stackCalculator('0'));
 console.log(stackCalculator('1'));
-// console.log(stackCalculator('1+2'));
-// console.log(stackCalculator('(1+2)*2'));
-// console.log(stackCalculator('(1+2*3)+2'));
-// console.log(stackCalculator('(1+2*50)+10'));
+console.log(stackCalculator('1+2'));
+console.log(stackCalculator('(1+2)*2'));
+console.log(stackCalculator('(1+2*3)+2'));
+console.log(stackCalculator('(1+2*50)+10'));
