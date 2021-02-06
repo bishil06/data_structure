@@ -20,6 +20,10 @@ class LinkedList {
         }
     }
 
+    isEmpty() {
+        return this.head === null;
+    }
+
     append(value) {
         const newNode = new LinkedListNode(value);
         if (this.head === null) {

@@ -11,6 +11,11 @@ describe('Linked List', () => {
         expect(llist.compFn).toBeNull();
     });
 
+    test('should isEmpty linked list', () => {
+        const llist = new LinkedList();
+        expect(llist.isEmpty()).toBe(true);
+    })
+
     test('should append empty linked list', () => {
         const llist = new LinkedList();
         llist.append(10);
