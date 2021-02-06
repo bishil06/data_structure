@@ -1,4 +1,3 @@
-const { TestScheduler } = require('jest');
 const Stack = require('../Stack.js');
 
 describe('Stack', () => {
